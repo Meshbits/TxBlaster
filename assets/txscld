@@ -3,6 +3,8 @@ current_dir="$(pwd)"
 
 data_dir="$current_dir/data/TXSCL"
 
+mkdir -p $data_dir
+
 conf_file="$data_dir/TXSCL.conf"
 
 echo $current_dir
