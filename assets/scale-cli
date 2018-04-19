@@ -1,0 +1,11 @@
+current_dir="$(pwd)"
+
+data_dir="$current_dir/data/TXSCL"
+
+conf_file="$data_dir/TXSCL.conf"
+
+#echo $current_dir
+#echo $data_dir
+#echo $conf_file
+
+komodo-cli -ac_name=TXSCL -datadir=$data_dir -conf=$conf_file $1 $2 $3 $4 $5 $6 $7 $8 $9
