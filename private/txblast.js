@@ -23,6 +23,9 @@ function Init() {
     //console.log(config.chainsinfo[i].coin);
     //console.log(config.chainsinfo[i].mmport);
     GetAddress(config.chainsinfo[i]);
+    if (config.chainsinfo[i].coin == 'TXSCL007') {
+      break;
+    }
   }
   //GetAddress(config.chainsinfo[1]);
 }
