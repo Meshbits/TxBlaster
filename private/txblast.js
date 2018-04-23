@@ -80,14 +80,17 @@ function ListUnspent(coinaddr, chainsdata) {
     if (response &&
         response.statusCode &&
         response.statusCode === 200) {
-      console.log(body);
+      //console.log(body);
 
       for (let i=0; i<body.length; i++) {
-        console.log(body[i].satoshis);
+        console.log(`${chainsdata.coin} amount: ${body[i].amount}`);
+        console.log(`${chainsdata.coin} amount(sats): ${body[i].amount}`);
         if (body[i].satoshis >= 1000000) {
           console.log(body[i].txid);
           console.log(body[i].vout);
           console.log(body[i].satoshis);
+          console.log(`RUNNING TX BLASTER FOR ${chainsdata.coin}`);
+          console.log(`#########################################################`);
           TxBlaster(body[i], chainsdata);
           break;
         } else {
@@ -127,6 +130,7 @@ function TxBlaster(txdata, chainsdata) {
         response.statusCode &&
         response.statusCode === 200) {
       console.log(body);
+      console.log(`#########################################################`);
       GetAddress(chainsdata);
       //console.log(response);
     } else {
