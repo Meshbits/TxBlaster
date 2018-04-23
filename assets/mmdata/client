@@ -11,4 +11,4 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	mm="../bin/osx/marketmaker"
 fi
 
-$mm "{\"gui\":\"nogui\",\"client\":1, \"userhome\":\"/${HOME#"/"}\", \"passphrase\":\"$passphrase\", \"coins\":$coins}" &
+$mm "{\"gui\":\"nogui\",\"client\":1, \"userhome\":\"/${HOME#"/"}\", \"passphrase\":\"$passphrase\", \"coins\":$coins, \"rpcport\":60000}" &
