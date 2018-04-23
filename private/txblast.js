@@ -84,7 +84,7 @@ function ListUnspent(coinaddr, chainsdata) {
 
       for (let i=0; i<body.length; i++) {
         console.log(`${chainsdata.coin} amount: ${body[i].amount}`);
-        console.log(`${chainsdata.coin} amount(sats): ${body[i].amount}`);
+        console.log(`${chainsdata.coin} satoshis(sats): ${body[i].amount}`);
         if (body[i].satoshis >= 1000000) {
           console.log(body[i].txid);
           console.log(body[i].vout);
