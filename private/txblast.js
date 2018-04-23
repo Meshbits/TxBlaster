@@ -97,6 +97,7 @@ function ListUnspent(coinaddr, chainsdata) {
           console.log(`Looks like there aren't enough good amount utxos to make transactions blast for ${chainsdata.coin}. Please send UTXO bigger than amount 1 to address: ${coinaddr}`);
           console.log(`TRANSACTION BLAST STOPPED FOR COIN: ${chainsdata.coin}`);
           console.log(`WILL TRY THIS CHAIN IN 30 SECONDS AGAIN.`);
+          console.log(`#########################################################`);
           setTimeout(function(){ GetAddress(chainsdata) }, 30 * 1000);
           break;
         }
