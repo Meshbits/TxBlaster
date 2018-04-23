@@ -1,0 +1,7 @@
+#!/bin/bash
+#source passphrase
+source startuppassphrase
+export coins="[{\"coin\":\"TXSCL\",\"asset\":\"TXSCL\",\"rpcport\":11821}]"
+./stop
+cd ..
+./marketmaker "{\"gui\":\"nogui\",\"client\":1, \"userhome\":\"/${HOME#"/"}\", \"passphrase\":\"$passphrase\", \"coins\":$coins}" &
