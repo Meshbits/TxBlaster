@@ -82,6 +82,10 @@ function ListUnspent(coinaddr, chainsdata) {
         response.statusCode === 200) {
       //console.log(body);
 
+      if (body.length == 0) {
+        console.log(`${chainsdata.coin}:>>> EMPTY ADDRESS. TO GET STARTED, PLEASE SEND SOME COINS TO ${coinaddr}`)
+      }
+
       for (let i=0; i<body.length; i++) {
         console.log(`${chainsdata.coin} amount: ${body[i].amount}`);
         console.log(`${chainsdata.coin} satoshis(sats): ${body[i].satoshis}`);
