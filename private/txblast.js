@@ -12,23 +12,33 @@ const config = fs.readJsonSync('../config.json');
 const userpass = sha256('startup'+config.passphrase);
 console.log(userpass);
 
+//console.log(config.chainsinfo);
+
+
 
 //INITIALISE///////////////////////////////////////////////////
 
 function Init() {
-  GetAddress();
+  for (let i=0; i<config.chainsinfo.length; i++) {
+    //console.log(config.chainsinfo[i].coin);
+    //console.log(config.chainsinfo[i].mmport);
+    GetAddress(config.chainsinfo[i]);
+  }
+  //GetAddress(config.chainsinfo[1]);
 }
 
 Init();
 
 //CALCULATE ADDRESS///////////////////////////////////////////////////
 
-function GetAddress() {
+function GetAddress(chainsdata) {
+  console.log('EXECUTING >>>>>> '+chainsdata.coin);
   var CalcAddrOptions = {
-    url: `http://127.0.0.1:7783`,
+    url: `http://127.0.0.1:${chainsdata.mmport}`,
     method: 'POST',
-    body: JSON.stringify({"userpass":userpass,"passphrase":config.passphrase,"method":"calcaddress","coin":"TXSCL"})
+    body: JSON.stringify({"userpass":userpass,"passphrase":config.passphrase,"method":"calcaddress","coin":chainsdata.coin})
   };
+  //console.log(CalcAddrOptions);
 
 
   function CalcAddress(error, response, body) {
@@ -37,7 +47,7 @@ function GetAddress() {
         response.statusCode === 200) {
       //console.log(JSON.parse(body));
       console.log(JSON.parse(body).coinaddr);
-      ListUnspent(JSON.parse(body).coinaddr);
+      ListUnspent(JSON.parse(body).coinaddr, chainsdata);
       //console.log(response);
     } else {
       console.log(error);
@@ -58,15 +68,15 @@ function GetAddress() {
 //LIST TRANSACTIONS///////////////////////////////////////////////////
 
 
-function ListUnspent(coinaddr) {
+function ListUnspent(coinaddr, chainsdata) {
   var ListUnspentOptions = {
-    url: `http://txscl.meshbits.io/insight-api/addr/${coinaddr}/utxo`,
+    url: `http://${chainsdata.coin}.meshbits.io/insight-api/addr/${coinaddr}/utxo`,
     method: 'GET',
     json: true
   };
 
 
-  function listunspent(error, response, body) {
+  function listunspent_cb(error, response, body) {
     if (response &&
         response.statusCode &&
         response.statusCode === 200) {
@@ -78,10 +88,14 @@ function ListUnspent(coinaddr) {
           console.log(body[i].txid);
           console.log(body[i].vout);
           console.log(body[i].satoshis);
-          TxBlaster(body[i]);
+          TxBlaster(body[i], chainsdata);
           break;
         } else {
-          console.log(`Looks like there aren't enough good amount utxos to make transactions blast. Please send UTXO bigger than amount 1 to address: ${coinaddr}`);
+          console.log(`Looks like there aren't enough good amount utxos to make transactions blast for ${chainsdata.coin}. Please send UTXO bigger than amount 1 to address: ${coinaddr}`);
+          console.log(`TRANSACTION BLAST STOPPED FOR COIN: ${chainsdata.coin}`);
+          console.log(`WILL TRY THIS CHAIN IN 30 SECONDS AGAIN.`);
+          setTimeout(function(){ GetAddress(chainsdata) }, 30 * 1000);
+          break;
         }
       }
     } else {
@@ -90,7 +104,7 @@ function ListUnspent(coinaddr) {
   }
 
 
-  request(ListUnspentOptions, listunspent);
+  request(ListUnspentOptions, listunspent_cb);
 }
 
 
@@ -100,11 +114,11 @@ function ListUnspent(coinaddr) {
 //TX BLASTER///////////////////////////////////////////////////
 
 
-function TxBlaster(txdata) {
+function TxBlaster(txdata, chainsdata) {
   var txblastOptions = {
-    url: `http://127.0.0.1:7783`,
+    url: `http://127.0.0.1:${chainsdata.mmport}`,
     method: 'POST',
-    body: JSON.stringify({"userpass":userpass,"broadcast":1,"numblast":100000,"password":config.passphrase,"utxotxid":txdata.txid,"utxovout":txdata.vout,"utxovalue":txdata.satoshis,"txfee":50000,"method":"txblast","coin":"TXSCL","outputs":config.addresslist})
+    body: JSON.stringify({"userpass":userpass,"broadcast":1,"numblast":1000,"password":config.passphrase,"utxotxid":txdata.txid,"utxovout":txdata.vout,"utxovalue":txdata.satoshis,"txfee":50000,"method":"txblast","coin":chainsdata.coin,"outputs":config.addresslist})
   };
 
 
@@ -113,7 +127,7 @@ function TxBlaster(txdata) {
         response.statusCode &&
         response.statusCode === 200) {
       console.log(body);
-      GetAddress();
+      GetAddress(chainsdata);
       //console.log(response);
     } else {
       console.log(error);

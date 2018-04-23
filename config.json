@@ -301,5 +301,15 @@
     {
       "RCpgfXmWj6W4H5hZobsBhRysNW2Bx2pjiV": 0.0001
     }
+  ],
+  "chainsinfo": [
+    {
+      "coin": "TXSCL",
+      "mmport": 7783
+    },
+    {
+      "coin": "TXSCL000",
+      "mmport": 7784
+    }
   ]
 }
