@@ -1,16 +1,3 @@
+pubkey=$1
 
-current_dir="$(pwd)"
-
-data_dir="$current_dir/data/TXSCL"
-
-mkdir -p $data_dir
-
-conf_file="$data_dir/TXSCL.conf"
-
-echo $current_dir
-
-echo $data_dir
-
-echo $conf_file
-
-komodod -ac_name=TXSCL -ac_supply=100000000 -addnode=54.36.176.84 -datadir=$data_dir -conf=$conf_file -pubkey=$pubkey -daemon
+komodod -ac_name=TXSCL -ac_supply=100000000 -addnode=54.36.176.84 -pubkey=$pubkey -daemon
