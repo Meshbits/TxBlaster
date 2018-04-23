@@ -60,4 +60,6 @@ typings/
 
 assets/data
 assets/DB/
+assets/mmdata/DB/
 assets/myipaddr
+assets/mmdata/myipaddr

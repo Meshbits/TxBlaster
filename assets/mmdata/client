@@ -3,5 +3,11 @@
 source startuppassphrase
 export coins="[{\"coin\":\"TXSCL\",\"asset\":\"TXSCL\",\"rpcport\":11821}]"
 ./stop
-cd ..
-./marketmaker "{\"gui\":\"nogui\",\"client\":1, \"userhome\":\"/${HOME#"/"}\", \"passphrase\":\"$passphrase\", \"coins\":$coins}" &
+
+export mm="../bin/linux/marketmaker"
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	mm="../bin/osx/marketmaker"
+fi
+
+$mm "{\"gui\":\"nogui\",\"client\":1, \"userhome\":\"/${HOME#"/"}\", \"passphrase\":\"$passphrase\", \"coins\":$coins}" &
