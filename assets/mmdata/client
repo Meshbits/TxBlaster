@@ -1,6 +1,7 @@
 #!/bin/bash
 #source passphrase
 source startuppassphrase
+export passphrase="startup$passphrase"
 export coins="[{\"coin\":\"TXSCL\",\"asset\":\"TXSCL\",\"rpcport\":11821}]"
 ./stop
 

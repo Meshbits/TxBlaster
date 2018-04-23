@@ -1,3 +1,2 @@
 
-#if your passphrase is for example "mypassphrase", add "startup". example: "startupmypassphrase"
-export passphrase="startupmypassphrase"
+export passphrase="testpass"
