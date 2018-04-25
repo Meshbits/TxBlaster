@@ -305,657 +305,657 @@
   "chainsinfo": [
     {
       "coin": "TXSCL",
-      "asset": "TXSCL",
+      "supply": "100000000",
       "rpcport": 11821,
       "mmport": 60000
     },
     {
       "coin": "TXSCL000",
-      "asset": "TXSCL000",
+      "supply": "100000000",
       "rpcport": 13273,
-      "mmport": 60001
-    },
-    {
-      "coin": "TXSCL001",
-      "asset": "TXSCL001",
-      "rpcport": 11998,
       "mmport": 60002
     },
     {
-      "coin": "TXSCL002",
-      "asset": "TXSCL002",
-      "rpcport": 12740,
-      "mmport": 60003
-    },
-    {
-      "coin": "TXSCL003",
-      "asset": "TXSCL003",
-      "rpcport": 15565,
+      "coin": "TXSCL001",
+      "supply": "100000000",
+      "rpcport": 11998,
       "mmport": 60004
     },
     {
-      "coin": "TXSCL004",
-      "asset": "TXSCL004",
-      "rpcport": 8161,
-      "mmport": 60005
-    },
-    {
-      "coin": "TXSCL005",
-      "asset": "TXSCL005",
-      "rpcport": 13664,
+      "coin": "TXSCL002",
+      "supply": "100000000",
+      "rpcport": 12740,
       "mmport": 60006
     },
     {
-      "coin": "TXSCL006",
-      "asset": "TXSCL006",
-      "rpcport": 8458,
-      "mmport": 60007
-    },
-    {
-      "coin": "TXSCL007",
-      "asset": "TXSCL007",
-      "rpcport": 15751,
+      "coin": "TXSCL003",
+      "supply": "100000000",
+      "rpcport": 15565,
       "mmport": 60008
     },
     {
-      "coin": "TXSCL008",
-      "asset": "TXSCL008",
-      "rpcport": 12562,
-      "mmport": 60009
-    },
-    {
-      "coin": "TXSCL00a",
-      "asset": "TXSCL00a",
-      "rpcport": 8595,
+      "coin": "TXSCL004",
+      "supply": "100000000",
+      "rpcport": 8161,
       "mmport": 60010
     },
     {
-      "coin": "TXSCL00b",
-      "asset": "TXSCL00b",
-      "rpcport": 14498,
-      "mmport": 60011
-    },
-    {
-      "coin": "TXSCL00c",
-      "asset": "TXSCL00c",
-      "rpcport": 13514,
+      "coin": "TXSCL005",
+      "supply": "100000000",
+      "rpcport": 13664,
       "mmport": 60012
     },
     {
-      "coin": "TXSCL00d",
-      "asset": "TXSCL00d",
-      "rpcport": 13251,
-      "mmport": 60013
-    },
-    {
-      "coin": "TXSCL00e",
-      "asset": "TXSCL00e",
-      "rpcport": 15706,
+      "coin": "TXSCL006",
+      "supply": "100000000",
+      "rpcport": 8458,
       "mmport": 60014
     },
     {
-      "coin": "TXSCL00f",
-      "asset": "TXSCL00f",
-      "rpcport": 12035,
-      "mmport": 60015
-    },
-    {
-      "coin": "TXSCL010",
-      "asset": "TXSCL010",
-      "rpcport": 8974,
+      "coin": "TXSCL007",
+      "supply": "100000000",
+      "rpcport": 15751,
       "mmport": 60016
     },
     {
-      "coin": "TXSCL011",
-      "asset": "TXSCL011",
-      "rpcport": 9473,
-      "mmport": 60017
-    },
-    {
-      "coin": "TXSCL012",
-      "asset": "TXSCL012",
-      "rpcport": 15605,
+      "coin": "TXSCL008",
+      "supply": "100000000",
+      "rpcport": 12562,
       "mmport": 60018
     },
     {
-      "coin": "TXSCL013",
-      "asset": "TXSCL013",
-      "rpcport": 13996,
-      "mmport": 60019
-    },
-    {
-      "coin": "TXSCL014",
-      "asset": "TXSCL014",
-      "rpcport": 10770,
+      "coin": "TXSCL00a",
+      "supply": "100000000",
+      "rpcport": 8595,
       "mmport": 60020
     },
     {
-      "coin": "TXSCL015",
-      "asset": "TXSCL015",
-      "rpcport": 14642,
-      "mmport": 60021
-    },
-    {
-      "coin": "TXSCL016",
-      "asset": "TXSCL016",
-      "rpcport": 15593,
+      "coin": "TXSCL00b",
+      "supply": "100000000",
+      "rpcport": 14498,
       "mmport": 60022
     },
     {
-      "coin": "TXSCL017",
-      "asset": "TXSCL017",
-      "rpcport": 15047,
-      "mmport": 60023
-    },
-    {
-      "coin": "TXSCL018",
-      "asset": "TXSCL018",
-      "rpcport": 11107,
+      "coin": "TXSCL00c",
+      "supply": "100000000",
+      "rpcport": 13514,
       "mmport": 60024
     },
     {
-      "coin": "TXSCL019",
-      "asset": "TXSCL019",
-      "rpcport": 12615,
-      "mmport": 60025
-    },
-    {
-      "coin": "TXSCL01a",
-      "asset": "TXSCL01a",
-      "rpcport": 10585,
+      "coin": "TXSCL00d",
+      "supply": "100000000",
+      "rpcport": 13251,
       "mmport": 60026
     },
     {
-      "coin": "TXSCL01b",
-      "asset": "TXSCL01b",
-      "rpcport": 8556,
-      "mmport": 60027
+      "coin": "TXSCL00e",
+      "supply": "100000000",
+      "rpcport": 15706,
+      "mmport": 60024
     },
     {
-      "coin": "TXSCL01c",
-      "asset": "TXSCL01c",
-      "rpcport": 12888,
+      "coin": "TXSCL00f",
+      "supply": "100000000",
+      "rpcport": 12035,
+      "mmport": 60026
+    },
+    {
+      "coin": "TXSCL010",
+      "supply": "100000000",
+      "rpcport": 8974,
       "mmport": 60028
     },
     {
-      "coin": "TXSCL01d",
-      "asset": "TXSCL01d",
-      "rpcport": 13678,
-      "mmport": 60029
-    },
-    {
-      "coin": "TXSCL01e",
-      "asset": "TXSCL01e",
-      "rpcport": 14189,
+      "coin": "TXSCL011",
+      "supply": "100000000",
+      "rpcport": 9473,
       "mmport": 60030
     },
     {
-      "coin": "TXSCL01f",
-      "asset": "TXSCL01f",
-      "rpcport": 9596,
-      "mmport": 60031
-    },
-    {
-      "coin": "TXSCL020",
-      "asset": "TXSCL020",
-      "rpcport": 12370,
+      "coin": "TXSCL012",
+      "supply": "100000000",
+      "rpcport": 15605,
       "mmport": 60032
     },
     {
-      "coin": "TXSCL021",
-      "asset": "TXSCL021",
-      "rpcport": 13400,
-      "mmport": 60033
-    },
-    {
-      "coin": "TXSCL022",
-      "asset": "TXSCL022",
-      "rpcport": 11463,
+      "coin": "TXSCL013",
+      "supply": "100000000",
+      "rpcport": 13996,
       "mmport": 60034
     },
     {
-      "coin": "TXSCL023",
-      "asset": "TXSCL023",
-      "rpcport": 14021,
-      "mmport": 60035
-    },
-    {
-      "coin": "TXSCL024",
-      "asset": "TXSCL024",
-      "rpcport": 14291,
+      "coin": "TXSCL014",
+      "supply": "100000000",
+      "rpcport": 10770,
       "mmport": 60036
     },
     {
-      "coin": "TXSCL025",
-      "asset": "TXSCL025",
-      "rpcport": 15265,
-      "mmport": 60037
-    },
-    {
-      "coin": "TXSCL026",
-      "asset": "TXSCL026",
-      "rpcport": 10700,
+      "coin": "TXSCL015",
+      "supply": "100000000",
+      "rpcport": 14642,
       "mmport": 60038
     },
     {
-      "coin": "TXSCL027",
-      "asset": "TXSCL027",
-      "rpcport": 9006,
-      "mmport": 60039
-    },
-    {
-      "coin": "TXSCL028",
-      "asset": "TXSCL028",
-      "rpcport": 15444,
+      "coin": "TXSCL016",
+      "supply": "100000000",
+      "rpcport": 15593,
       "mmport": 60040
     },
     {
-      "coin": "TXSCL029",
-      "asset": "TXSCL029",
-      "rpcport": 14234,
-      "mmport": 60041
-    },
-    {
-      "coin": "TXSCL02a",
-      "asset": "TXSCL02a",
-      "rpcport": 10184,
+      "coin": "TXSCL017",
+      "supply": "100000000",
+      "rpcport": 15047,
       "mmport": 60042
     },
     {
-      "coin": "TXSCL02b",
-      "asset": "TXSCL02b",
-      "rpcport": 8439,
-      "mmport": 60042
-    },
-    {
-      "coin": "TXSCL02c",
-      "asset": "TXSCL02c",
-      "rpcport": 15070,
-      "mmport": 60043
-    },
-    {
-      "coin": "TXSCL02d",
-      "asset": "TXSCL02d",
-      "rpcport": 8039,
+      "coin": "TXSCL018",
+      "supply": "100000000",
+      "rpcport": 11107,
       "mmport": 60044
     },
     {
-      "coin": "TXSCL02e",
-      "asset": "TXSCL02e",
-      "rpcport": 15777,
-      "mmport": 60045
-    },
-    {
-      "coin": "TXSCL02f",
-      "asset": "TXSCL02f",
-      "rpcport": 8915,
+      "coin": "TXSCL019",
+      "supply": "100000000",
+      "rpcport": 12615,
       "mmport": 60046
     },
     {
-      "coin": "TXSCL030",
-      "asset": "TXSCL030",
-      "rpcport": 15084,
-      "mmport": 60047
-    },
-    {
-      "coin": "TXSCL031",
-      "asset": "TXSCL031",
-      "rpcport": 9138,
+      "coin": "TXSCL01a",
+      "supply": "100000000",
+      "rpcport": 10585,
       "mmport": 60048
     },
     {
-      "coin": "TXSCL032",
-      "asset": "TXSCL032",
-      "rpcport": 15133,
-      "mmport": 60049
-    },
-    {
-      "coin": "TXSCL033",
-      "asset": "TXSCL033",
-      "rpcport": 9146,
+      "coin": "TXSCL01b",
+      "supply": "100000000",
+      "rpcport": 8556,
       "mmport": 60050
     },
     {
-      "coin": "TXSCL034",
-      "asset": "TXSCL034",
-      "rpcport": 8359,
-      "mmport": 60051
-    },
-    {
-      "coin": "TXSCL035",
-      "asset": "TXSCL035",
-      "rpcport": 14506,
+      "coin": "TXSCL01c",
+      "supply": "100000000",
+      "rpcport": 12888,
       "mmport": 60052
     },
     {
-      "coin": "TXSCL036",
-      "asset": "TXSCL036",
-      "rpcport": 10863,
-      "mmport": 60053
-    },
-    {
-      "coin": "TXSCL037",
-      "asset": "TXSCL037",
-      "rpcport": 12773,
+      "coin": "TXSCL01d",
+      "supply": "100000000",
+      "rpcport": 13678,
       "mmport": 60054
     },
     {
-      "coin": "TXSCL038",
-      "asset": "TXSCL038",
-      "rpcport": 11178,
-      "mmport": 60055
-    },
-    {
-      "coin": "TXSCL039",
-      "asset": "TXSCL039",
-      "rpcport": 13043,
+      "coin": "TXSCL01e",
+      "supply": "100000000",
+      "rpcport": 14189,
       "mmport": 60056
     },
     {
-      "coin": "TXSCL03a",
-      "asset": "TXSCL03a",
-      "rpcport": 14985,
-      "mmport": 60057
-    },
-    {
-      "coin": "TXSCL03b",
-      "asset": "TXSCL03b",
-      "rpcport": 15627,
+      "coin": "TXSCL01f",
+      "supply": "100000000",
+      "rpcport": 9596,
       "mmport": 60058
     },
     {
-      "coin": "TXSCL03c",
-      "asset": "TXSCL03c",
-      "rpcport": 14367,
-      "mmport": 60059
-    },
-    {
-      "coin": "TXSCL03d",
-      "asset": "TXSCL03d",
-      "rpcport": 8794,
+      "coin": "TXSCL020",
+      "supply": "100000000",
+      "rpcport": 12370,
       "mmport": 60060
     },
     {
-      "coin": "TXSCL03e",
-      "asset": "TXSCL03e",
-      "rpcport": 9294,
-      "mmport": 60061
-    },
-    {
-      "coin": "TXSCL03f",
-      "asset": "TXSCL03f",
-      "rpcport": 11829,
+      "coin": "TXSCL021",
+      "supply": "100000000",
+      "rpcport": 13400,
       "mmport": 60062
     },
     {
-      "coin": "TXSCL040",
-      "asset": "TXSCL040",
-      "rpcport": 14638,
-      "mmport": 60063
-    },
-    {
-      "coin": "TXSCL041",
-      "asset": "TXSCL041",
-      "rpcport": 15490,
+      "coin": "TXSCL022",
+      "supply": "100000000",
+      "rpcport": 11463,
       "mmport": 60064
     },
     {
-      "coin": "TXSCL042",
-      "asset": "TXSCL042",
-      "rpcport": 15379,
-      "mmport": 60065
-    },
-    {
-      "coin": "TXSCL044",
-      "asset": "TXSCL044",
-      "rpcport": 15244,
+      "coin": "TXSCL023",
+      "supply": "100000000",
+      "rpcport": 14021,
       "mmport": 60066
     },
     {
-      "coin": "TXSCL045",
-      "asset": "TXSCL045",
-      "rpcport": 10525,
-      "mmport": 60067
-    },
-    {
-      "coin": "TXSCL046",
-      "asset": "TXSCL046",
-      "rpcport": 12925,
+      "coin": "TXSCL024",
+      "supply": "100000000",
+      "rpcport": 14291,
       "mmport": 60068
     },
     {
-      "coin": "TXSCL047",
-      "asset": "TXSCL047",
-      "rpcport": 14886,
-      "mmport": 60069
-    },
-    {
-      "coin": "TXSCL048",
-      "asset": "TXSCL048",
-      "rpcport": 13529,
+      "coin": "TXSCL025",
+      "supply": "100000000",
+      "rpcport": 15265,
       "mmport": 60070
     },
     {
-      "coin": "TXSCL049",
-      "asset": "TXSCL049",
-      "rpcport": 11182,
-      "mmport": 60071
-    },
-    {
-      "coin": "TXSCL04a",
-      "asset": "TXSCL04a",
-      "rpcport": 13894,
+      "coin": "TXSCL026",
+      "supply": "100000000",
+      "rpcport": 10700,
       "mmport": 60072
     },
     {
-      "coin": "TXSCL04b",
-      "asset": "TXSCL04b",
-      "rpcport": 12873,
-      "mmport": 60073
-    },
-    {
-      "coin": "TXSCL04c",
-      "asset": "TXSCL04c",
-      "rpcport": 9444,
+      "coin": "TXSCL027",
+      "supply": "100000000",
+      "rpcport": 9006,
       "mmport": 60074
     },
     {
-      "coin": "TXSCL04d",
-      "asset": "TXSCL04d",
-      "rpcport": 9726,
-      "mmport": 60075
-    },
-    {
-      "coin": "TXSCL04e",
-      "asset": "TXSCL04e",
-      "rpcport": 10054,
+      "coin": "TXSCL028",
+      "supply": "100000000",
+      "rpcport": 15444,
       "mmport": 60076
     },
     {
-      "coin": "TXSCL04f",
-      "asset": "TXSCL04f",
-      "rpcport": 14331,
-      "mmport": 60077
-    },
-    {
-      "coin": "TXSCL050",
-      "asset": "TXSCL050",
-      "rpcport": 11146,
+      "coin": "TXSCL029",
+      "supply": "100000000",
+      "rpcport": 14234,
       "mmport": 60078
     },
     {
-      "coin": "TXSCL051",
-      "asset": "TXSCL051",
-      "rpcport": 13772,
-      "mmport": 60079
-    },
-    {
-      "coin": "TXSCL052",
-      "asset": "TXSCL052",
-      "rpcport": 9660,
+      "coin": "TXSCL02a",
+      "supply": "100000000",
+      "rpcport": 10184,
       "mmport": 60080
     },
     {
-      "coin": "TXSCL053",
-      "asset": "TXSCL053",
-      "rpcport": 13701,
-      "mmport": 60081
-    },
-    {
-      "coin": "TXSCL054",
-      "asset": "TXSCL054",
-      "rpcport": 8245,
+      "coin": "TXSCL02b",
+      "supply": "100000000",
+      "rpcport": 8439,
       "mmport": 60082
     },
     {
-      "coin": "TXSCL055",
-      "asset": "TXSCL055",
-      "rpcport": 9672,
-      "mmport": 60083
-    },
-    {
-      "coin": "TXSCL056",
-      "asset": "TXSCL056",
-      "rpcport": 14114,
+      "coin": "TXSCL02c",
+      "supply": "100000000",
+      "rpcport": 15070,
       "mmport": 60084
     },
     {
-      "coin": "TXSCL057",
-      "asset": "TXSCL057",
-      "rpcport": 8236,
-      "mmport": 60085
-    },
-    {
-      "coin": "TXSCL058",
-      "asset": "TXSCL058",
-      "rpcport": 10243,
+      "coin": "TXSCL02d",
+      "supply": "100000001",
+      "rpcport": 8039,
       "mmport": 60086
     },
     {
-      "coin": "TXSCL059",
-      "asset": "TXSCL059",
-      "rpcport": 10625,
-      "mmport": 60087
-    },
-    {
-      "coin": "TXSCL05a",
-      "asset": "TXSCL05a",
-      "rpcport": 15077,
+      "coin": "TXSCL02e",
+      "supply": "100000000",
+      "rpcport": 15777,
       "mmport": 60088
     },
     {
-      "coin": "TXSCL05b",
-      "asset": "TXSCL05b",
-      "rpcport": 15515,
-      "mmport": 60089
-    },
-    {
-      "coin": "TXSCL05c",
-      "asset": "TXSCL05c",
-      "rpcport": 9625,
+      "coin": "TXSCL02f",
+      "supply": "100000000",
+      "rpcport": 8915,
       "mmport": 60090
     },
     {
-      "coin": "TXSCL05d",
-      "asset": "TXSCL05d",
-      "rpcport": 11984,
-      "mmport": 60091
-    },
-    {
-      "coin": "TXSCL05e",
-      "asset": "TXSCL05e",
-      "rpcport": 10368,
-      "mmport": 60092
-    },
-    {
-      "coin": "TXSCL05f",
-      "asset": "TXSCL05f",
-      "rpcport": 10061,
-      "mmport": 60093
-    },
-    {
-      "coin": "TXSCL060",
-      "asset": "TXSCL060",
-      "rpcport": 8887,
-      "mmport": 60094
-    },
-    {
-      "coin": "TXSCL061",
-      "asset": "TXSCL061",
-      "rpcport": 13418,
-      "mmport": 60095
-    },
-    {
-      "coin": "TXSCL062",
-      "asset": "TXSCL062",
-      "rpcport": 13948,
-      "mmport": 60096
-    },
-    {
-      "coin": "TXSCL063",
-      "asset": "TXSCL063",
-      "rpcport": 13005,
-      "mmport": 60097
-    },
-    {
-      "coin": "TXSCL064",
-      "asset": "TXSCL064",
-      "rpcport": 14900,
-      "mmport": 60098
-    },
-    {
-      "coin": "TXSCL065",
-      "asset": "TXSCL065",
-      "rpcport": 10516,
-      "mmport": 60099
-    },
-    {
-      "coin": "TXSCL066",
-      "asset": "TXSCL066",
-      "rpcport": 10237,
+      "coin": "TXSCL030",
+      "supply": "100000000",
+      "rpcport": 15084,
       "mmport": 60100
     },
     {
-      "coin": "TXSCL067",
-      "asset": "TXSCL067",
-      "rpcport": 14753,
-      "mmport": 60101
-    },
-    {
-      "coin": "TXSCL068",
-      "asset": "TXSCL068",
-      "rpcport": 11563,
+      "coin": "TXSCL031",
+      "supply": "100000000",
+      "rpcport": 9138,
       "mmport": 60102
     },
     {
-      "coin": "TXSCL069",
-      "asset": "TXSCL069",
-      "rpcport": 10601,
-      "mmport": 60103
-    },
-    {
-      "coin": "TXSCL06a",
-      "asset": "TXSCL06a",
-      "rpcport": 9861,
+      "coin": "TXSCL032",
+      "supply": "100000000",
+      "rpcport": 15133,
       "mmport": 60104
     },
     {
+      "coin": "TXSCL033",
+      "supply": "100000000",
+      "rpcport": 9146,
+      "mmport": 60108
+    },
+    {
+      "coin": "TXSCL034",
+      "supply": "100000000",
+      "rpcport": 8359,
+      "mmport": 60110
+    },
+    {
+      "coin": "TXSCL035",
+      "supply": "100000000",
+      "rpcport": 14506,
+      "mmport": 60112
+    },
+    {
+      "coin": "TXSCL036",
+      "supply": "100000000",
+      "rpcport": 10863,
+      "mmport": 60114
+    },
+    {
+      "coin": "TXSCL037",
+      "supply": "100000000",
+      "rpcport": 12773,
+      "mmport": 60116
+    },
+    {
+      "coin": "TXSCL038",
+      "supply": "100000000",
+      "rpcport": 11178,
+      "mmport": 60118
+    },
+    {
+      "coin": "TXSCL039",
+      "supply": "100000000",
+      "rpcport": 13043,
+      "mmport": 60120
+    },
+    {
+      "coin": "TXSCL03a",
+      "supply": "100000000",
+      "rpcport": 14985,
+      "mmport": 60122
+    },
+    {
+      "coin": "TXSCL03b",
+      "supply": "100000000",
+      "rpcport": 15627,
+      "mmport": 60124
+    },
+    {
+      "coin": "TXSCL03c",
+      "supply": "100000000",
+      "rpcport": 14367,
+      "mmport": 60126
+    },
+    {
+      "coin": "TXSCL03d",
+      "supply": "100000000",
+      "rpcport": 8794,
+      "mmport": 60128
+    },
+    {
+      "coin": "TXSCL03e",
+      "supply": "100000000",
+      "rpcport": 9294,
+      "mmport": 60130
+    },
+    {
+      "coin": "TXSCL03f",
+      "supply": "100000000",
+      "rpcport": 11829,
+      "mmport": 60132
+    },
+    {
+      "coin": "TXSCL040",
+      "supply": "100000000",
+      "rpcport": 14638,
+      "mmport": 60134
+    },
+    {
+      "coin": "TXSCL041",
+      "supply": "100000000",
+      "rpcport": 15490,
+      "mmport": 60136
+    },
+    {
+      "coin": "TXSCL042",
+      "supply": "100000000",
+      "rpcport": 15379,
+      "mmport": 60138
+    },
+    {
+      "coin": "TXSCL044",
+      "supply": "100000000",
+      "rpcport": 15244,
+      "mmport": 60140
+    },
+    {
+      "coin": "TXSCL045",
+      "supply": "100000000",
+      "rpcport": 10525,
+      "mmport": 60142
+    },
+    {
+      "coin": "TXSCL046",
+      "supply": "100000000",
+      "rpcport": 12925,
+      "mmport": 60144
+    },
+    {
+      "coin": "TXSCL047",
+      "supply": "100000000",
+      "rpcport": 14886,
+      "mmport": 60146
+    },
+    {
+      "coin": "TXSCL048",
+      "supply": "100000000",
+      "rpcport": 13529,
+      "mmport": 60148
+    },
+    {
+      "coin": "TXSCL049",
+      "supply": "100000000",
+      "rpcport": 11182,
+      "mmport": 60150
+    },
+    {
+      "coin": "TXSCL04a",
+      "supply": "100000000",
+      "rpcport": 13894,
+      "mmport": 60152
+    },
+    {
+      "coin": "TXSCL04b",
+      "supply": "100000000",
+      "rpcport": 12873,
+      "mmport": 60154
+    },
+    {
+      "coin": "TXSCL04c",
+      "supply": "100000000",
+      "rpcport": 9444,
+      "mmport": 60156
+    },
+    {
+      "coin": "TXSCL04d",
+      "supply": "100000000",
+      "rpcport": 9726,
+      "mmport": 60158
+    },
+    {
+      "coin": "TXSCL04e",
+      "supply": "100000000",
+      "rpcport": 10054,
+      "mmport": 60160
+    },
+    {
+      "coin": "TXSCL04f",
+      "supply": "100000000",
+      "rpcport": 14331,
+      "mmport": 60162
+    },
+    {
+      "coin": "TXSCL050",
+      "supply": "100000000",
+      "rpcport": 11146,
+      "mmport": 60164
+    },
+    {
+      "coin": "TXSCL051",
+      "supply": "100000000",
+      "rpcport": 13772,
+      "mmport": 60166
+    },
+    {
+      "coin": "TXSCL052",
+      "supply": "100000000",
+      "rpcport": 9660,
+      "mmport": 60168
+    },
+    {
+      "coin": "TXSCL053",
+      "supply": "100000000",
+      "rpcport": 13701,
+      "mmport": 60170
+    },
+    {
+      "coin": "TXSCL054",
+      "supply": "100000000",
+      "rpcport": 8245,
+      "mmport": 60172
+    },
+    {
+      "coin": "TXSCL055",
+      "supply": "100000000",
+      "rpcport": 9672,
+      "mmport": 60174
+    },
+    {
+      "coin": "TXSCL056",
+      "supply": "100000000",
+      "rpcport": 14114,
+      "mmport": 60176
+    },
+    {
+      "coin": "TXSCL057",
+      "supply": "100000000",
+      "rpcport": 8236,
+      "mmport": 60178
+    },
+    {
+      "coin": "TXSCL058",
+      "supply": "100000000",
+      "rpcport": 10243,
+      "mmport": 60180
+    },
+    {
+      "coin": "TXSCL059",
+      "supply": "100000000",
+      "rpcport": 10625,
+      "mmport": 60182
+    },
+    {
+      "coin": "TXSCL05a",
+      "supply": "100000000",
+      "rpcport": 15077,
+      "mmport": 60184
+    },
+    {
+      "coin": "TXSCL05b",
+      "supply": "100000000",
+      "rpcport": 15515,
+      "mmport": 60186
+    },
+    {
+      "coin": "TXSCL05c",
+      "supply": "100000000",
+      "rpcport": 9625,
+      "mmport": 60188
+    },
+    {
+      "coin": "TXSCL05d",
+      "supply": "100000000",
+      "rpcport": 11984,
+      "mmport": 60190
+    },
+    {
+      "coin": "TXSCL05e",
+      "supply": "100000000",
+      "rpcport": 10368,
+      "mmport": 60192
+    },
+    {
+      "coin": "TXSCL05f",
+      "supply": "100000000",
+      "rpcport": 10061,
+      "mmport": 60194
+    },
+    {
+      "coin": "TXSCL060",
+      "supply": "100000000",
+      "rpcport": 8887,
+      "mmport": 60196
+    },
+    {
+      "coin": "TXSCL061",
+      "supply": "100000000",
+      "rpcport": 13418,
+      "mmport": 60198
+    },
+    {
+      "coin": "TXSCL062",
+      "supply": "100000000",
+      "rpcport": 13948,
+      "mmport": 60200
+    },
+    {
+      "coin": "TXSCL063",
+      "supply": "100000000",
+      "rpcport": 13005,
+      "mmport": 60202
+    },
+    {
+      "coin": "TXSCL064",
+      "supply": "100000001",
+      "rpcport": 14900,
+      "mmport": 60204
+    },
+    {
+      "coin": "TXSCL065",
+      "supply": "100000000",
+      "rpcport": 10516,
+      "mmport": 60206
+    },
+    {
+      "coin": "TXSCL066",
+      "supply": "100000000",
+      "rpcport": 10237,
+      "mmport": 60208
+    },
+    {
+      "coin": "TXSCL067",
+      "supply": "100000000",
+      "rpcport": 14753,
+      "mmport": 60210
+    },
+    {
+      "coin": "TXSCL068",
+      "supply": "100000000",
+      "rpcport": 11563,
+      "mmport": 60212
+    },
+    {
+      "coin": "TXSCL069",
+      "supply": "100000000",
+      "rpcport": 10601,
+      "mmport": 60214
+    },
+    {
+      "coin": "TXSCL06a",
+      "supply": "100000000",
+      "rpcport": 9861,
+      "mmport": 60216
+    },
+    {
       "coin": "TXSCL06b",
-      "asset": "TXSCL06b",
+      "supply": "100000000",
       "rpcport": 13426,
-      "mmport": 60105
+      "mmport": 60218
     },
     {
       "coin": "TXSCL06c",
-      "asset": "TXSCL06c",
+      "supply": "100000000",
       "rpcport": 13847,
-      "mmport": 60106
+      "mmport": 60220
     },
     {
       "coin": "TXSCL06d",
-      "asset": "TXSCL06d",
+      "supply": "100000000",
       "rpcport": 14457,
-      "mmport": 60107
+      "mmport": 60224
     }
   ]
 }
