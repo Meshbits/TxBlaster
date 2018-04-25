@@ -49,7 +49,8 @@ function GetAddress(chainsdata) {
         response.statusCode &&
         response.statusCode === 200) {
       //console.log(JSON.parse(body));
-      console.log(JSON.parse(body).coinaddr);
+      
+      //console.log(JSON.parse(body).coinaddr);
       ListUnspent(JSON.parse(body).coinaddr, chainsdata);
       //console.log(response);
     } else {
@@ -78,11 +79,15 @@ function ListUnspent(coinaddr, chainsdata) {
     json: true
   };
 
+  //console.log(ListUnspentOptions);
+
 
   function listunspent_cb(error, response, body) {
     if (response &&
         response.statusCode &&
         response.statusCode === 200) {
+      
+      console.log(chainsdata.coin);
       //console.log(body);
 
       if (body.length == 0) {
@@ -109,6 +114,13 @@ function ListUnspent(coinaddr, chainsdata) {
           break;
         }
       }
+    } else if (response &&
+        response.statusCode &&
+        response.statusCode === 400) {
+          console.log(body);
+          if (body == 'No information available for address. Code:-5') {
+            console.log(`${chainsdata.coin}:>>> EMPTY ADDRESS. TO GET STARTED, PLEASE SEND SOME COINS TO ${coinaddr}`)
+          }
     } else {
       console.log(error);
     }

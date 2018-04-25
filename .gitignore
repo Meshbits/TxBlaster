@@ -63,3 +63,5 @@ assets/DB/
 assets/mmdata/DB/
 assets/myipaddr
 assets/mmdata/myipaddr
+assets/mmdata/TXSCL*
+private/start_all_mm.sh
