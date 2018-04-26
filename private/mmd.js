@@ -61,7 +61,7 @@ console.log('ASSETCHAIN RANGE STOP: ' + config.chainsinfo[config.ac_range[1]].co
 //console.log(_defaultUserHome);
 //console.log(mmPath);
 
-for (let i=0; i<config.chainsinfo.length; i++) {
+for (let i=config.ac_range[0]; i<config.chainsinfo.length; i++) {
 	var startmm_script_exists = function() {
 		//console.log(config.chainsinfo[i].coin);
 		//console.log(config.chainsinfo[i].supply);

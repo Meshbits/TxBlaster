@@ -14,16 +14,19 @@ console.log(userpass);
 
 //console.log(config.chainsinfo);
 
+console.log('ASSETCHAIN ARRAY RANGE: ' + config.ac_range[0] + ' to ' + config.ac_range[1]);
+console.log('TX BLASTING ASSETCHAIN RANGE START: ' + config.chainsinfo[config.ac_range[0]].coin);
+console.log('TX BLASTING ASSETCHAIN RANGE STOP: ' + config.chainsinfo[config.ac_range[1]].coin);
 
 
 //INITIALISE///////////////////////////////////////////////////
 
 function Init() {
-  for (let i=0; i<config.chainsinfo.length; i++) {
+  for (let i=config.ac_range[0]; i<config.chainsinfo.length; i++) {
     //console.log(config.chainsinfo[i].coin);
     //console.log(config.chainsinfo[i].mmport);
     GetAddress(config.chainsinfo[i]);
-    if (config.chainsinfo[i].coin == 'TXSCL007') {
+    if (config.chainsinfo[i].coin == config.chainsinfo[config.ac_range[1]].coin) {
       break;
     }
   }
