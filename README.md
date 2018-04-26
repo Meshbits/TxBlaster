@@ -1,7 +1,7 @@
 # TxBlaster
 Komodo Transactions Scalability Test
 
-### Requirements
+## Requirements
 
  - Install `komodod` and run TXSCL assetchain. As of now only assetchains from range TXCSL - TXSCL007 are supported. More will be added soon.
  - Node.js 8.x
@@ -10,19 +10,19 @@ Komodo Transactions Scalability Test
 
 ## Installation
 
-#### Install node.js:
+### Install node.js:
 ```shell
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 
-#### Install requires global node modules/commands: PM2
+### Install requires global node modules/commands: PM2
 ```shell
 sudo npm install -g pm2
 ```
 
 
-#### Install TxBlaster
+### Install TxBlaster
 NOTE: Right now it's only command line and not the full web app is being used. Just few commandl line scripts within this app.
 
 ```shell
@@ -38,7 +38,7 @@ npm install
 ```
 
 
-##### Edit config.json
+### Edit config.json
 `config.json` includes your `passphrase` and the range of `marketmaker` daemons you want to run on your machine.
 
 Example if you want to only run the first 5 assetchains to do transaction blasing, then specify the `ac_range` as `0, 4`. (The number starts from 0, instead of 1).
@@ -56,7 +56,7 @@ Default `ac_range` is specified as `0,8` as it's first assetchains TXSCL to TXCS
 
 
 
-##### Start `marketmaker` daemons
+### Start `marketmaker` daemons
 To start the `marketmaker` daemons you need to execute the following command, which will generate the launch script.
 
 ```shell
@@ -109,7 +109,7 @@ pm2 delete all
 
 
 
-#### Fire the Transaction Blaster command
+### Fire the Transaction Blaster command
 To this point it's expected that your assetchains and `marketmaker` daemons are all setup and ready.
 
 Execute the transaction blaster command:
@@ -206,7 +206,7 @@ RUNNING TX BLASTER FOR TXSCL002
 To this point your txblaster is running in loop for ALL assetchains.
 
 
-##### Notes for Transaction Blaster script
+### Notes for Transaction Blaster script
 In case the funds are emptied from the address, you don't need to kill the `txblast.js` command/script. It'll be displaying the message that the required size of UTXO is not found, means the amount in your address left isn't much enought to make further txblasts.
 Just send more amount/funds to the same address you sent before and it will pickup the updates in next retry which happens every 30 seconds for all assetchains asynchronously.
 
