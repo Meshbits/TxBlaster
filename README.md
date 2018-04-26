@@ -23,7 +23,7 @@ sudo npm install -g pm2
 
 
 ### Install TxBlaster
-NOTE: Right now it's only command line and not the full web app is being used. Just few commandl line scripts within this app.
+NOTE: Right now it's only command line and not the full web app is being used. Just few command line scripts within this app.
 
 ```shell
 cd ~
@@ -217,4 +217,4 @@ You'll keep getting the output of the txblast command as it completes or fails.
 You can monitor the output of txblast command on txblast screen output, and the view all console output of the `marketmaker` use `pm2 monit` command. Explorer `pm2 monit` to find out how to see the console outputs of specific `marketmaker`. I don't know much about `pm2 monit` yet. :)
 
 
-Enjoy Transaction Blasting and Thank you for participating in Komodo Scalability test.
+## Enjoy Transaction Blasting and Thank you for participating in Komodo Scalability test.
