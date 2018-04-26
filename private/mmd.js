@@ -1,19 +1,47 @@
 const request = require('request-promise'),
-	  sha256 = require('sha256'),
-	  fs = require('fs-extra'),
-	  path = require('path'),
-	  os = require('os'),
-	  pm2 = require('pm2'),
-	  exec = require('child_process').exec,
-	  Promise = require('bluebird'),
-	  _platform = os.platform();
+		sha256 = require('sha256'),
+		fs = require('fs-extra'),
+		path = require('path'),
+		os = require('os'),
+		pm2 = require('pm2'),
+		exec = require('child_process').exec,
+		Promise = require('bluebird'),
+		_platform = os.platform();
 
 const config = fs.readJsonSync('../config.json');
 const mm_data = path.join(__dirname, '../assets/mmdata');
 
+const Reset = "\x1b[0m",
+	Bright = "\x1b[1m",
+	Dim = "\x1b[2m",
+	Underscore = "\x1b[4m",
+	Blink = "\x1b[5m",
+	Reverse = "\x1b[7m",
+	Hidden = "\x1b[8m",
+
+	FgBlack = "\x1b[30m",
+	FgRed = "\x1b[31m",
+	FgGreen = "\x1b[32m",
+	FgYellow = "\x1b[33m",
+	FgBlue = "\x1b[34m",
+	FgMagenta = "\x1b[35m",
+	FgCyan = "\x1b[36m",
+	FgWhite = "\x1b[37m",
+
+	BgBlack = "\x1b[40m",
+	BgRed = "\x1b[41m",
+	BgGreen = "\x1b[42m",
+	BgYellow = "\x1b[43m",
+	BgBlue = "\x1b[44m",
+	BgMagenta = "\x1b[45m",
+	BgCyan = "\x1b[46m",
+	BgWhite = "\x1b[47m";
+
 fs.removeSync(`start_all_mm.sh`); // Removed existing file mm start file
 fs.appendFileSync('start_all_mm.sh', `cd ${mm_data}
 `);
+
+var pm2apps = {"apps": []};
 
 switch (_platform) {
 	case 'darwin':
@@ -25,6 +53,10 @@ switch (_platform) {
 		mmPath = path.join(__dirname, '../assets/bin/linux/marketmaker');
 		break;
 }
+
+console.log('ASSETCHAIN ARRAY RANGE: ' + config.ac_range[0] + ' to ' + config.ac_range[1]);
+console.log('ASSETCHAIN RANGE START: ' + config.chainsinfo[config.ac_range[0]].coin);
+console.log('ASSETCHAIN RANGE STOP: ' + config.chainsinfo[config.ac_range[1]].coin);
 
 //console.log(_defaultUserHome);
 //console.log(mmPath);
@@ -100,7 +132,7 @@ for (let i=0; i<config.chainsinfo.length; i++) {
 */
 
 var startmm_script_exists = function() {
-	console.log(config.chainsinfo[i].coin);
+	//console.log(config.chainsinfo[i].coin);
 	//console.log(config.chainsinfo[i].supply);
 	//console.log(config.chainsinfo[i].rpcport);
 	//console.log(config.chainsinfo[i].mmport);
@@ -121,16 +153,16 @@ var startmm_script_exists = function() {
     return new Promise(function(resolve, reject) {
     	fs.pathExists(`${mm_data}/${config.chainsinfo[i].coin}.sh`, (err, exists) => {
 			var result = 'startmm_script_exists is done'
-			console.log(result)
+			//console.log(result)
 			//resolve(exists);
 
 			if (exists === true) {
-				console.log(`>>>>>>> ${mm_data}/${config.chainsinfo[i].coin}.sh file exists. DELETEING...`);
+				//console.log(`>>>>>>> ${mm_data}/${config.chainsinfo[i].coin}.sh file exists. DELETEING...`);
 				fs.removeSync(`${mm_data}/${config.chainsinfo[i].coin}.sh`); // Removed existing file.
-				console.log(`>>>>>>> ${mm_data}/${config.chainsinfo[i].coin}.sh file DELETED...`);
+				//console.log(`>>>>>>> ${mm_data}/${config.chainsinfo[i].coin}.sh file DELETED...`);
 				resolve(mm_params);
 			} else if (exists === false) {
-				console.log(`>>>>>>> ${mm_data}/${config.chainsinfo[i].coin}.sh file doesn't exists. CREATING...`);
+				//console.log(`>>>>>>> ${mm_data}/${config.chainsinfo[i].coin}.sh file doesn't exists. CREATING...`);
 				resolve(mm_params);
     		}
     	if (err) { console.error(err);  } // => null
@@ -148,11 +180,30 @@ var create_startmm_script = function(script_path, script_data, coin_name) {
 		});
 		var result = 'create_startmm_script is done'
 
-		fs.appendFileSync('start_all_mm.sh', `pm2 start ${script_path} --name=${coin_name}
-`);
-		fs.chmodSync('start_all_mm.sh', '755');
+		_tempAppObject = {
+			"name": `${coin_name}`,
+			"script": `${script_path}`
+		}
+		//console.log(_tempAppObject);
+		pm2apps.apps.push(_tempAppObject);
 
-		console.log(result)
+		if (config.chainsinfo[i].coin == coin_name) {
+			//console.log(pm2apps);
+			console.log('>>>>>>> marketmaker pm2 starter script created in defined range <<<<<<<');
+			console.log('-------------------');
+			console.log(`Please use this command to start all marketmkers: ${FgGreen}pm2 start pm2apps.json${Reset}`);
+			console.log(`To list all marketmkers: ${FgBlue}pm2 list${Reset}`);
+			console.log(`To monitor all marketmkers: ${FgBlue}pm2 monit${Reset}`);
+			console.log(`To stop all marketmkers: ${FgRed}pm2 delete all${Reset}`);
+			console.log('-------------------');
+			fs.writeJsonSync('./pm2apps.json', pm2apps)
+		}
+
+		/*fs.appendFileSync('start_all_mm.sh', `pm2 start ${script_path} --name=${coin_name}
+`);
+		fs.chmodSync('start_all_mm.sh', '755');*/
+
+		//console.log(result)
 		resolve(result);
 	})
 }
@@ -175,7 +226,7 @@ var startmm_pm2 = function(coin_name, script_path) {
 		});
 		var result = 'startmm_pm2 is done'
 
-		console.log(result)
+		//console.log(result)
 		resolve(result);
 	})
 }
@@ -183,7 +234,7 @@ var startmm_pm2 = function(coin_name, script_path) {
 
 startmm_script_exists()
 .then(function(mm_params) { 
-	console.log('this is the '+ mm_params);
+	//console.log('this is the '+ mm_params);
 	return create_startmm_script(`${mm_data}/${config.chainsinfo[i].coin}.sh`, `${mmPath} "${mm_params}"`,config.chainsinfo[i].coin);
 })
 //.then( startmm_pm2(config.chainsinfo[i].coin, `${mm_data}/${config.chainsinfo[i].coin}.sh`))
@@ -215,7 +266,7 @@ startmm_script_exists()
 */	
 
 	
-	if (config.chainsinfo[i].coin == 'TXSCL007') {
+	if (config.chainsinfo[i].coin == config.chainsinfo[config.ac_range[1]].coin) {
 		break;
 	}
 }
