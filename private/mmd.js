@@ -186,7 +186,7 @@ startmm_script_exists()
 	console.log('this is the '+ mm_params);
 	return create_startmm_script(`${mm_data}/${config.chainsinfo[i].coin}.sh`, `${mmPath} "${mm_params}"`,config.chainsinfo[i].coin);
 })
-.then( startmm_pm2(config.chainsinfo[i].coin, `${mm_data}/${config.chainsinfo[i].coin}.sh`))
+//.then( startmm_pm2(config.chainsinfo[i].coin, `${mm_data}/${config.chainsinfo[i].coin}.sh`))
 
 
 /*

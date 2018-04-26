@@ -60,8 +60,13 @@ typings/
 
 assets/data
 assets/DB/
+assets/gen*
 assets/mmdata/DB/
 assets/myipaddr
 assets/mmdata/myipaddr
 assets/mmdata/TXSCL*
+assets/mmdata/gen*
 private/start_all_mm.sh
+private/DB/
+private/myipaddr
+private/gen*
