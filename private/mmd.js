@@ -9,6 +9,7 @@ const request = require('request-promise'),
 		_platform = os.platform();
 
 const config = fs.readJsonSync('../config.json');
+const chainsinfo = fs.readJsonSync('../chainsinfo.json');
 const mm_data = path.join(__dirname, '../assets/mmdata');
 
 const Reset = "\x1b[0m",
@@ -55,45 +56,45 @@ switch (_platform) {
 }
 
 console.log('ASSETCHAIN ARRAY RANGE: ' + config.ac_range[0] + ' to ' + config.ac_range[1]);
-console.log('ASSETCHAIN RANGE START: ' + config.chainsinfo[config.ac_range[0]].coin);
-console.log('ASSETCHAIN RANGE STOP: ' + config.chainsinfo[config.ac_range[1]].coin);
+console.log('ASSETCHAIN RANGE START: ' + chainsinfo[config.ac_range[0]].coin);
+console.log('ASSETCHAIN RANGE STOP: ' + chainsinfo[config.ac_range[1]].coin);
 
 //console.log(_defaultUserHome);
 //console.log(mmPath);
 
-for (let i=config.ac_range[0]; i<config.chainsinfo.length; i++) {
+for (let i=config.ac_range[0]; i<chainsinfo.length; i++) {
 	var startmm_script_exists = function() {
-		//console.log(config.chainsinfo[i].coin);
-		//console.log(config.chainsinfo[i].supply);
-		//console.log(config.chainsinfo[i].rpcport);
-		//console.log(config.chainsinfo[i].mmport);
+		//console.log(chainsinfo[i].coin);
+		//console.log(chainsinfo[i].supply);
+		//console.log(chainsinfo[i].rpcport);
+		//console.log(chainsinfo[i].mmport);
 
-		var _coins = `[{\"coin\":\"${config.chainsinfo[i].coin}\",\"asset\":\"${config.chainsinfo[i].coin}\",\"rpcport\":${config.chainsinfo[i].rpcport}}]`
+		var _coins = `[{\"coin\":\"${chainsinfo[i].coin}\",\"asset\":\"${chainsinfo[i].coin}\",\"rpcport\":${chainsinfo[i].rpcport}}]`
 		//_coins = _coins.replace(/"/g, '\\"');
 
-		//var _coins = `"[{"coin":"${config.chainsinfo[i].coin}","asset":"${config.chainsinfo[i].coin}","rpcport":${config.chainsinfo[i].rpcport}}]"`;
+		//var _coins = `"[{"coin":"${chainsinfo[i].coin}","asset":"${chainsinfo[i].coin}","rpcport":${chainsinfo[i].rpcport}}]"`;
 		//console.log(_coins);
 
-		var mm_params = `{\"gui\":\"nogui\",\"client\":1, \"userhome\":\"${_defaultUserHome}\", \"passphrase\":\"${'startup'+config.passphrase}\", \"coins\":${_coins}, \"rpcport\":${config.chainsinfo[i].mmport}}`;
+		var mm_params = `{\"gui\":\"nogui\",\"client\":1, \"userhome\":\"${_defaultUserHome}\", \"passphrase\":\"${'startup'+config.passphrase}\", \"coins\":${_coins}, \"rpcport\":${chainsinfo[i].mmport}}`;
 		mm_params = mm_params.replace(/"/g, '\\"');
 		//console.log(mm_params);
 		//console.log(mmPath);
-		//var mm_process = `${mmPath} "{"gui":"nogui","client":1, "userhome":"${_defaultUserHome}"}", "passphrase":"${'startup'+config.passphrase}", "coins":${_coins}, "rpcport":${config.chainsinfo[i].mmport}}"`;
+		//var mm_process = `${mmPath} "{"gui":"nogui","client":1, "userhome":"${_defaultUserHome}"}", "passphrase":"${'startup'+config.passphrase}", "coins":${_coins}, "rpcport":${chainsinfo[i].mmport}}"`;
 		//console.log(mm_process);
 
 	    return new Promise(function(resolve, reject) {
-	    	fs.pathExists(`${mm_data}/${config.chainsinfo[i].coin}.sh`, (err, exists) => {
+	    	fs.pathExists(`${mm_data}/${chainsinfo[i].coin}.sh`, (err, exists) => {
 				var result = 'startmm_script_exists is done'
 				//console.log(result)
 				//resolve(exists);
 
 				if (exists === true) {
-					//console.log(`>>>>>>> ${mm_data}/${config.chainsinfo[i].coin}.sh file exists. DELETEING...`);
-					fs.removeSync(`${mm_data}/${config.chainsinfo[i].coin}.sh`); // Removed existing file.
-					//console.log(`>>>>>>> ${mm_data}/${config.chainsinfo[i].coin}.sh file DELETED...`);
+					//console.log(`>>>>>>> ${mm_data}/${chainsinfo[i].coin}.sh file exists. DELETEING...`);
+					fs.removeSync(`${mm_data}/${chainsinfo[i].coin}.sh`); // Removed existing file.
+					//console.log(`>>>>>>> ${mm_data}/${chainsinfo[i].coin}.sh file DELETED...`);
 					resolve(mm_params);
 				} else if (exists === false) {
-					//console.log(`>>>>>>> ${mm_data}/${config.chainsinfo[i].coin}.sh file doesn't exists. CREATING...`);
+					//console.log(`>>>>>>> ${mm_data}/${chainsinfo[i].coin}.sh file doesn't exists. CREATING...`);
 					resolve(mm_params);
 	    		}
 	    	if (err) { console.error(err);  } // => null
@@ -118,7 +119,7 @@ for (let i=config.ac_range[0]; i<config.chainsinfo.length; i++) {
 			//console.log(_tempAppObject);
 			pm2apps.apps.push(_tempAppObject);
 
-			if (config.chainsinfo[i].coin == coin_name) {
+			if (chainsinfo[i].coin == coin_name) {
 				//console.log(pm2apps);
 				console.log('>>>>>>> marketmaker pm2 starter script created in defined range <<<<<<<');
 				console.log('-------------------');
@@ -166,17 +167,17 @@ for (let i=config.ac_range[0]; i<config.chainsinfo.length; i++) {
 	startmm_script_exists()
 	.then(function(mm_params) { 
 		//console.log('this is the '+ mm_params);
-		return create_startmm_script(`${mm_data}/${config.chainsinfo[i].coin}.sh`, `${mmPath} "${mm_params}"`,config.chainsinfo[i].coin);
+		return create_startmm_script(`${mm_data}/${chainsinfo[i].coin}.sh`, `${mmPath} "${mm_params}"`,chainsinfo[i].coin);
 	})
-	//.then( startmm_pm2(config.chainsinfo[i].coin, `${mm_data}/${config.chainsinfo[i].coin}.sh`))
+	//.then( startmm_pm2(chainsinfo[i].coin, `${mm_data}/${chainsinfo[i].coin}.sh`))
 
 
 	/*
 		function create_startmm_script() {
-			fs.outputFileSync(`${mm_data}/${config.chainsinfo[i].coin}.sh`, `${mmPath} "${mm_params}"`, function (err) {
+			fs.outputFileSync(`${mm_data}/${chainsinfo[i].coin}.sh`, `${mmPath} "${mm_params}"`, function (err) {
 				if (err) throw err;
 			});
-			//startmm_pm2(config.chainsinfo[i].coin, `${mm_data}/${config.chainsinfo[i].coin}.sh`);
+			//startmm_pm2(chainsinfo[i].coin, `${mm_data}/${chainsinfo[i].coin}.sh`);
 		}
 
 		function startmm_pm2(coin_name, script_path) {
@@ -197,7 +198,7 @@ for (let i=config.ac_range[0]; i<config.chainsinfo.length; i++) {
 	*/	
 
 	
-	if (config.chainsinfo[i].coin == config.chainsinfo[config.ac_range[1]].coin) {
+	if (chainsinfo[i].coin == chainsinfo[config.ac_range[1]].coin) {
 		break;
 	}
 }
