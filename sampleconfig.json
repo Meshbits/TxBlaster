@@ -1,6 +1,7 @@
 {
   "passphrase": "testpass",
   "ac_range": [0,8],
+  "ac_seed": ["195.201.167.37","88.99.57.78"],
   "addresslist": [
     {
       "RKV4MzePkH8H9N6K3RdC1JDDWBLbCE4H5p": 0.0001
