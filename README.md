@@ -10,6 +10,11 @@ Komodo Transactions Scalability Test
 
 ## Installation
 
+### Komodo setup
+To setup Komodo on your machine you can use this repo, which will auto setup Komodo on your linux machine:
+
+https://github.com/Meshbits/komodo_scripts
+
 ### Install node.js:
 ```shell
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
@@ -49,7 +54,7 @@ This option is useful in case you only want to test txblaster for specific asset
 Default `ac_range` is specified as `0,8` as it's first assetchains TXSCL to TXCSL007. This whole setup depends on Insight Explorers, as soon as other explorers are setup and ready other chains will be enabled, or users/testers will be informed to raise the range above 8 if they wish to.
 
 
- - `as_range` - You can leave it's value as is.
+ - `as_range` - You can leave it's value as is or just change it between the ranges 0 to 4097.
  - `passphrase` - Just input your `passphrase` there replacing the default value `testpass`.
 
  MAKE SURE YOU CHANGE THE PASSPHRASE, AND DON'T USE `testpass`.
@@ -67,15 +72,21 @@ node mmd.js
 Executing the above command will give the output like this:
 ```shell
 $ node mmd.js 
-ASSETCHAIN ARRAY RANGE: 0 to 8
-ASSETCHAIN RANGE START: TXSCL
-ASSETCHAIN RANGE STOP: TXSCL007
+ASSETCHAIN ARRAY RANGE: 2220 to 2221
+ASSETCHAIN RANGE START: TXSCL8ab
+ASSETCHAIN RANGE STOP: TXSCL8ac
 >>>>>>> marketmaker pm2 starter script created in defined range <<<<<<<
 -------------------
-Please use this command to start all marketmkers: pm2 start pm2apps.json
-To list all marketmkers: pm2 list
-To monitor all marketmkers: pm2 monit
-To stop all marketmkers: pm2 delete all
+Please use the following commands to start all MarketMakers and ASSETCHAINS:
+MARKETMAKERS: pm2 start pm2_mm_apps.json
+ASSETCHAINS: pm2 start pm2_ac_apps.json
+To list all PM2 processes: pm2 list
+To monitor all PM2 processes: pm2 monit
+To stop all PM2 processes: pm2 delete all
+-------------------
+To restart, reload (Graceful), stop or delete pm2 processs Only MARKETMAKERS or ASSETCHAINS use .json script like this:
+pm2 restart/reload/stop/delete pm2_mm_apps.json
+pm2 restart/reload/stop/delete pm2_ac_apps.json
 -------------------
 ```
 
