@@ -11,6 +11,7 @@ const request = require('request-promise'),
 const config = fs.readJsonSync('../config.json');
 const chainsinfo = fs.readJsonSync('../chainsinfo.json');
 const mm_data = path.join(__dirname, '../assets/mmdata');
+const ac_data = path.join(__dirname, '../assets/ac_data');
 
 const Reset = "\x1b[0m",
 		Bright = "\x1b[1m",
@@ -42,7 +43,8 @@ const Reset = "\x1b[0m",
 fs.appendFileSync('start_all_mm.sh', `cd ${mm_data}
 `);*/
 
-var pm2apps = {"apps": []};
+var pm2_mm_apps = {"apps": []};
+var pm2_ac_apps = {"apps": []};
 
 switch (_platform) {
 	case 'darwin':
@@ -82,6 +84,11 @@ for (let i=config.ac_range[0]; i<chainsinfo.length; i++) {
 		//var mm_process = `${mmPath} "{"gui":"nogui","client":1, "userhome":"${_defaultUserHome}"}", "passphrase":"${'startup'+config.passphrase}", "coins":${_coins}, "rpcport":${chainsinfo[i].mmport}}"`;
 		//console.log(mm_process);
 
+		var ac_command = `komodod -ac_name=${chainsinfo[i].coin} -ac_cc=1 -ac_supply=${chainsinfo[i].supply} -ac_end=0 -ac_reward=${chainsinfo[i].reward} -ac_halving=0 -ac_decay=0 -addnode=${config.ac_seed[0]} -addnode=${config.ac_seed[1]} # rpcport ${chainsinfo[i].rpcport}`
+		//console.log(ac_command);
+		var ac_script_path = `${ac_data}/ac_${chainsinfo[i].coin}.sh`
+		//console.log(ac_script_path);
+
 	    return new Promise(function(resolve, reject) {
 	    	fs.pathExists(`${mm_data}/${chainsinfo[i].coin}.sh`, (err, exists) => {
 				var result = 'startmm_script_exists is done'
@@ -90,12 +97,15 @@ for (let i=config.ac_range[0]; i<chainsinfo.length; i++) {
 
 				if (exists === true) {
 					//console.log(`>>>>>>> ${mm_data}/${chainsinfo[i].coin}.sh file exists. DELETEING...`);
-					fs.removeSync(`${mm_data}/${chainsinfo[i].coin}.sh`); // Removed existing file.
+					fs.removeSync(`${mm_data}/${chainsinfo[i].coin}.sh`); // Removed existing mm script file.
+					fs.removeSync(ac_script_path); // Removed existing ac script file.
 					//console.log(`>>>>>>> ${mm_data}/${chainsinfo[i].coin}.sh file DELETED...`);
-					resolve(mm_params);
+					var return_data = [mm_params, ac_script_path, ac_command]
+					resolve(return_data);
 				} else if (exists === false) {
 					//console.log(`>>>>>>> ${mm_data}/${chainsinfo[i].coin}.sh file doesn't exists. CREATING...`);
-					resolve(mm_params);
+					var return_data = [mm_params, ac_script_path, ac_command]
+					resolve(return_data);
 	    		}
 	    	if (err) { console.error(err);  } // => null
 	    	});
@@ -103,35 +113,61 @@ for (let i=config.ac_range[0]; i<chainsinfo.length; i++) {
 	}
 
 		
-	var create_startmm_script = function(script_path, script_data, coin_name) {
+	var create_startmm_script = function(ac_script_path, ac_script_data, mm_script_path, mm_script_data, coin_name) {
 		
 		return new Promise(function(resolve, reject) {
-			//console.log('Script Data: '+script_data);
-			fs.outputFileSync(script_path, script_data, function (err) {
-				if (err) throw err;
-			});
+			//console.log('Script Data: '+mm_script_data);
 			var result = 'create_startmm_script is done'
 
-			_tempAppObject = {
+			/////////// PM2 MM JSON SCRIPT OBJECTS //////////
+			fs.outputFileSync(mm_script_path, mm_script_data, function (err) {
+				if (err) throw err;
+			});
+
+			_tempMMAppObject = {
 				"name": `${coin_name}`,
-				"script": `${script_path}`
+				"script": `${mm_script_path}`,
+				"cwd": path.join(__dirname, '../assets/mmdata')
 			}
-			//console.log(_tempAppObject);
-			pm2apps.apps.push(_tempAppObject);
+			//console.log(_tempMMAppObject);
+			pm2_mm_apps.apps.push(_tempMMAppObject);
+			//////////////////////////////////////////////////
+
+
+			/////////// PM2 ASSETCHAINS JSON SCRIPT OBJECTS //////////
+			fs.outputFileSync(ac_script_path, ac_script_data, function (err) {
+				if (err) throw err;
+			});
+
+			_tempACAppObject = {
+				"name": `${coin_name}`,
+				"script": `${ac_script_path}`,
+				"cwd": path.join(__dirname, '../assets/ac_data')
+			}
+			//console.log(_tempACAppObject);
+			pm2_ac_apps.apps.push(_tempACAppObject);
+			//////////////////////////////////////////////////
 
 			if (chainsinfo[i].coin == coin_name) {
-				//console.log(pm2apps);
+				//console.log(pm2_mm_apps);
 				console.log('>>>>>>> marketmaker pm2 starter script created in defined range <<<<<<<');
 				console.log('-------------------');
-				console.log(`Please use this command to start all marketmkers: ${FgGreen}pm2 start pm2apps.json${Reset}`);
-				console.log(`To list all marketmkers: ${FgBlue}pm2 list${Reset}`);
-				console.log(`To monitor all marketmkers: ${FgBlue}pm2 monit${Reset}`);
-				console.log(`To stop all marketmkers: ${FgRed}pm2 delete all${Reset}`);
+				console.log(`Please use the following commands to start all MarketMakers and ASSETCHAINS:`);
+				console.log(`MARKETMAKERS: ${FgGreen}pm2 start pm2_mm_apps.json${Reset}`);
+				console.log(`ASSETCHAINS: ${FgGreen}pm2 start pm2_ac_apps.json${Reset}`);
+				console.log(`To list all PM2 processes: ${FgBlue}pm2 list${Reset}`);
+				console.log(`To monitor all PM2 processes: ${FgBlue}pm2 monit${Reset}`);
+				console.log(`To stop all PM2 processes: ${FgRed}pm2 delete all${Reset}`);
 				console.log('-------------------');
-				fs.writeJsonSync('./pm2apps.json', pm2apps)
+				console.log(`To restart, reload (Graceful), stop or delete pm2 processs Only MARKETMAKERS or ASSETCHAINS use .json script like this:`)
+				console.log(`${FgMagenta}pm2 restart/reload/stop/delete pm2_mm_apps.json${Reset}`)
+				console.log(`${FgMagenta}pm2 restart/reload/stop/delete pm2_ac_apps.json${Reset}`)
+				console.log('-------------------');
+				fs.writeJsonSync('./pm2_mm_apps.json', pm2_mm_apps);
+				fs.writeJsonSync('./pm2_ac_apps.json', pm2_ac_apps);
 			}
 
-			/*fs.appendFileSync('start_all_mm.sh', `pm2 start ${script_path} --name=${coin_name}
+			/*fs.appendFileSync('start_all_mm.sh', `pm2 start ${mm_script_path} --name=${coin_name}
 	`);
 			fs.chmodSync('start_all_mm.sh', '755');*/
 
@@ -165,9 +201,12 @@ for (let i=config.ac_range[0]; i<chainsinfo.length; i++) {
 
 
 	startmm_script_exists()
-	.then(function(mm_params) { 
-		//console.log('this is the '+ mm_params);
-		return create_startmm_script(`${mm_data}/${chainsinfo[i].coin}.sh`, `${mmPath} "${mm_params}"`,chainsinfo[i].coin);
+	.then(function(data) { 
+		//console.log(data);
+		//console.log('this is the mm_params: '+ data[0]);
+		//console.log('this is the ac_script_path: '+ data[1]);
+		//console.log('this is the ac_command: '+ data[2]);
+		return create_startmm_script(data[1], data[2], `${mm_data}/${chainsinfo[i].coin}.sh`, `${mmPath} "${data[0]}"`,chainsinfo[i].coin);
 	})
 	//.then( startmm_pm2(chainsinfo[i].coin, `${mm_data}/${chainsinfo[i].coin}.sh`))
 

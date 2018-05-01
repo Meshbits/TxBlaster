@@ -69,6 +69,8 @@ assets/mmdata/gen*
 private/start_all_mm.sh
 private/DB/
 private/myipaddr
-private/pm2apps.json
+private/pm2*.json
 private/gen*
 config.json
+assets/ac_data/ac*
+assets/ac_data/gen*
