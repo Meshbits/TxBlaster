@@ -2,7 +2,20 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/css/style.css' />
+    
+    <script src="js/socket.io.js"></script>
+	<script>
+		var socket = io('https://insight.bitpay.com/');
+		socket.on('connect', function () {
+			socket.emit('subscribe', 'inv');
+			console.log("Connected to https://insight.bitpay.com/");
+		});
+		
+		socket.on('tx', function (data) {
+			console.log(data);
+		});
+	</script>
   </head>
   <body>
     <h1><%= title %></h1>
