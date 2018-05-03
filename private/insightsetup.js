@@ -62,6 +62,7 @@ spentindex=1
 zmqpubrawtx=tcp://${config.ac_seed[0]}:${chainsinfo[i].rpcport+1}
 zmqpubhashblock=tcp://${config.ac_seed[0]}:${chainsinfo[i].rpcport+1}
 rpcallowip=88.99.57.78
+rpcallowip=127.0.0.1
 rpcport=${chainsinfo[i].rpcport}
 rpcuser=${config.insight_setup.rpcuser}
 rpcpassword=${config.insight_setup.rpcpassword}
