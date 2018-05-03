@@ -125,8 +125,8 @@ uglifyjs ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/insight-ui
 
 			//////// MAKE PM2 START SCRIPT AS WELL ///////
 			_tempAppObject = {
-				"name": `"${chainsinfo[i].coin}"`,
-				"script": `"${_tmp_insight_conf_path}"`
+				"name": `${chainsinfo[i].coin}`,
+				"script": `${os.homedir()}/explorers/${chainsinfo[i].coin}/bitcore-node.json`
 			}
 			//console.log(_tempAppObject);
 			pm2_insight_apps.apps.push(_tempAppObject);
@@ -137,7 +137,7 @@ uglifyjs ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/insight-ui
 		if (chainsinfo[i].coin == chainsinfo[config.ac_range[1]].coin) {
 			//console.log(pm2_insight_apps);
 			if (command == 'insight') {
-				fs.writeJsonSync('./pm2_insight_apps.json', pm2_insight_apps);
+				fs.outputFileSync('./pm2_insight_apps.json', JSON.stringify(pm2_insight_apps, null, 2));
 			}
 			break;
 		}
