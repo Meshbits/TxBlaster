@@ -135,7 +135,9 @@ uglifyjs ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/insight-ui
 
 		if (chainsinfo[i].coin == chainsinfo[config.ac_range[1]].coin) {
 			//console.log(pm2_insight_apps);
-			fs.writeJsonSync('./pm2_insight_apps.json', pm2_insight_apps);
+			if (command == 'insight') {
+				fs.writeJsonSync('./pm2_insight_apps.json', pm2_insight_apps);
+			}
 			break;
 		}
 	}
