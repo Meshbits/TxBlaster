@@ -52,7 +52,7 @@ function setup_insight(command) {
 
 		//////// IF ASSETCHAIN SETUP, THEN SETUP .CONF FILE OF ASSETCHAINS WITHIN THE RANGE SPECIFIED //////////
 		if (command == 'acsetup') {
-			var _tmp_conf_file_path = `${os.homedir()}/.${chainsinfo[i].coin}/${chainsinfo[i].coin}.conf`;
+			var _tmp_conf_file_path = `${os.homedir()}/.komodo/${chainsinfo[i].coin}/${chainsinfo[i].coin}.conf`;
 			var _tmp_conf_data = `server=1
 whitelist=88.99.57.78
 txindex=1
