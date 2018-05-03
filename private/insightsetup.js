@@ -3,8 +3,8 @@ const path = require('path'),
 		shell = require('shelljs'),
 		fs = require('fs-extra');
 
-const config = fs.readJsonSync('config.json');
-const chainsinfo = fs.readJsonSync('chainsinfo.json');
+const config = fs.readJsonSync('../config.json');
+const chainsinfo = fs.readJsonSync('../chainsinfo.json');
 const mm_data = path.join(__dirname, '../assets/mmdata');
 var pm2_insight_apps = {"apps": []};
 
