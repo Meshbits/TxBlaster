@@ -59,8 +59,8 @@ txindex=1
 addressindex=1
 timestampindex=1
 spentindex=1
-zmqpubrawtx=tcp://${config.ac_seed[0]}:${chainsinfo[i].rpcport+1}
-zmqpubhashblock=tcp://${config.ac_seed[0]}:${chainsinfo[i].rpcport+1}
+zmqpubrawtx=tcp://${config.ac_seed[0]}:${chainsinfo[i].zmqport}
+zmqpubhashblock=tcp://${config.ac_seed[0]}:${chainsinfo[i].zmqport}
 rpcallowip=88.99.57.78
 rpcallowip=127.0.0.1
 rpcport=${chainsinfo[i].rpcport}
@@ -109,7 +109,7 @@ uglifyjs ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/insight-ui
 				"rpcport": ${chainsinfo[i].rpcport},
 				"rpcuser": "${config.insight_setup.rpcuser}",
 				"rpcpassword": "${config.insight_setup.rpcpassword}",
-				"zmqpubrawtx": "tcp://${config.ac_seed[0]}:${chainsinfo[i].rpcport+1}"
+				"zmqpubrawtx": "tcp://${config.ac_seed[0]}:${chainsinfo[i].zmqport}"
 			}
 		]
 		}
