@@ -71,6 +71,7 @@ private/DB/
 private/myipaddr
 private/pm2*.json
 private/gen*
+private/nginx*
 config.json
 assets/ac_data/ac*
 assets/ac_data/gen*
