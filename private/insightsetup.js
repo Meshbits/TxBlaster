@@ -109,11 +109,11 @@ uglifyjs ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/insight-ui
 		"bitcoind": {
 		"connect": [
 			{
-				"rpchost": "${config.ac_seed[0]}",
+				"rpchost": "${config.ac_seed[process.argv[3]]}",
 				"rpcport": ${chainsinfo[i].rpcport},
 				"rpcuser": "${config.insight_setup.rpcuser}",
 				"rpcpassword": "${config.insight_setup.rpcpassword}",
-				"zmqpubrawtx": "tcp://${config.ac_seed[0]}:${chainsinfo[i].zmqport}"
+				"zmqpubrawtx": "tcp://${config.ac_seed[process.argv[3]]}:${chainsinfo[i].zmqport}"
 			}
 		]
 		}
