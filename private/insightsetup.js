@@ -130,7 +130,8 @@ uglifyjs ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/insight-ui
 			//////// MAKE PM2 START SCRIPT AS WELL ///////
 			_tempAppObject = {
 				"name": `${chainsinfo[i].coin}`,
-				"script": `${os.homedir()}/explorers/${chainsinfo[i].coin}/bitcore-node.json`
+				"script": `${os.homedir()}/explorers/${chainsinfo[i].coin}/start.sh`,
+				"cwd": `${os.homedir()}/explorers/${chainsinfo[i].coin}/`
 			}
 			//console.log(_tempAppObject);
 			pm2_insight_apps.apps.push(_tempAppObject);
