@@ -34,11 +34,15 @@ switch (process.argv[2]) {
 	case 'acsetup':
 		setup_insight(process.argv[2]);
 		break;
+	case 'nginx':
+		setup_insight(process.argv[2]);
+		break;
 	default:
 		console.log(`this is default message`);
 		break;
 }
 console.log(`==============================`);
+
 
 function setup_insight(command) {
 
@@ -131,6 +135,44 @@ uglifyjs ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/insight-ui
 			//console.log(_tempAppObject);
 			pm2_insight_apps.apps.push(_tempAppObject);
 		}
+
+
+		/////// MAKE NGINX FILE CONTENTS ///////
+		if (command == 'nginx') {
+			var _tmp_nginx_file_upstream = `
+	server 127.0.0.1:${chainsinfo[i].mmport};	#${chainsinfo[i].coin}`
+
+			fs.appendFileSync('./nginx_upstream_upstream', _tmp_nginx_file_upstream);
+
+			var _tmp_nginx_file_serverconf = `
+
+server {
+	listen 80;
+	server_name ${chainsinfo[i].coin}.meshbits.io;
+
+	error_log /var/log/nginx/${chainsinfo[i].coin}.access.log;
+
+	location / {
+		proxy_pass http://127.0.0.1:${chainsinfo[i].mmport}/;
+		proxy_http_version 1.1;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "upgrade";
+		proxy_set_header Host $http_host;
+
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forward-For $proxy_add_x_forwarded_for;
+		proxy_set_header X-Forward-Proto http;
+		proxy_set_header X-Nginx-Proxy true;
+
+		proxy_redirect off;
+	}
+}
+`
+
+			fs.appendFileSync('./nginx_upstream_serverconf', _tmp_nginx_file_serverconf);
+		}
+
+
 
 		//console.log(`------------------------------`);
 
