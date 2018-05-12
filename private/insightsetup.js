@@ -58,14 +58,13 @@ function setup_insight(command) {
 		if (command == 'acsetup') {
 			var _tmp_conf_file_path = `${os.homedir()}/.komodo/${chainsinfo[i].coin}/${chainsinfo[i].coin}.conf`;
 			var _tmp_conf_data = `server=1
-whitelist=88.99.57.78
+whitelist=127.0.0.1
 txindex=1
 addressindex=1
 timestampindex=1
 spentindex=1
-zmqpubrawtx=tcp://${config.ac_seed[process.argv[3]]}:${chainsinfo[i].zmqport}
-zmqpubhashblock=tcp://${config.ac_seed[process.argv[3]]}:${chainsinfo[i].zmqport}
-rpcallowip=88.99.57.78
+zmqpubrawtx=tcp://127.0.0.1:${chainsinfo[i].zmqport}
+zmqpubhashblock=tcp://127.0.0.1:${chainsinfo[i].zmqport}
 rpcallowip=127.0.0.1
 rpcport=${chainsinfo[i].rpcport}
 rpcuser=${config.insight_setup.rpcuser}
@@ -109,11 +108,11 @@ uglifyjs ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/insight-ui
 		"bitcoind": {
 		"connect": [
 			{
-				"rpchost": "${config.ac_seed[process.argv[3]]}",
+				"rpchost": "127.0.0.1",
 				"rpcport": ${chainsinfo[i].rpcport},
 				"rpcuser": "${config.insight_setup.rpcuser}",
 				"rpcpassword": "${config.insight_setup.rpcpassword}",
-				"zmqpubrawtx": "tcp://${config.ac_seed[process.argv[3]]}:${chainsinfo[i].zmqport}"
+				"zmqpubrawtx": "tcp://127.0.0.1:${chainsinfo[i].zmqport}"
 			}
 		]
 		}
