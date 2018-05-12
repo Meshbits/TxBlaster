@@ -179,7 +179,7 @@ server {
 		if (chainsinfo[i].coin == chainsinfo[config.ac_range[1]].coin) {
 			//console.log(pm2_insight_apps);
 			if (command == 'insight') {
-				fs.outputFileSync('./pm2_insight_apps.json', JSON.stringify(pm2_insight_apps, null, 2));
+				fs.outputFileSync(`./pm2_insight_apps_${config.ac_range[0]}_${config.ac_range[1]}.json`, JSON.stringify(pm2_insight_apps, null, 2));
 			}
 			break;
 		}
