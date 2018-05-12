@@ -119,7 +119,6 @@ ln -s ${os.homedir()}/explorers/TXSCL/node_modules/bindings ${os.homedir()}/expl
 ln -s ${os.homedir()}/explorers/TXSCL/node_modules/bitcoind-rpc ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/
 ln -s ${os.homedir()}/explorers/TXSCL/node_modules/bitcore-lib ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/
 ln -s ${os.homedir()}/explorers/TXSCL/node_modules/bitcore-message ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/
-ln -s ${os.homedir()}/explorers/TXSCL/node_modules/bitcore-node ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/
 ln -s ${os.homedir()}/explorers/TXSCL/node_modules/blob ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/
 ln -s ${os.homedir()}/explorers/TXSCL/node_modules/body-parser ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/
 ln -s ${os.homedir()}/explorers/TXSCL/node_modules/boom ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/
@@ -364,6 +363,7 @@ ln -s ${os.homedir()}/explorers/TXSCL/node_modules/xmlhttprequest-ssl ${os.homed
 ln -s ${os.homedir()}/explorers/TXSCL/node_modules/yallist ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/
 ln -s ${os.homedir()}/explorers/TXSCL/node_modules/yeast ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/
 ln -s ${os.homedir()}/explorers/TXSCL/node_modules/zmq ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/
+cp -av ${os.homedir()}/explorers/TXSCL/node_modules/bitcore-node ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/
 cp -av ${os.homedir()}/explorers/TXSCL/node_modules/insight-ui ${os.homedir()}/explorers/${chainsinfo[i].coin}/node_modules/
 sed -i 's/TXSCL/${chainsinfo[i].coin}/g' ${os.homedir()}/explorers/${chainsinfo[i].coin}/txscld
 sed -i 's/TXSCL/${chainsinfo[i].coin}/g' ${os.homedir()}/explorers/${chainsinfo[i].coin}/txscl-cli
