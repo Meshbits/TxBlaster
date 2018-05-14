@@ -463,13 +463,13 @@ server {
 		if (command == 'dns') {
 
 			if (chainsinfo[i].coin == chainsinfo[config.ac_range[0]].coin) {
-				fs.appendFileSync(`./dns_file_data_${config.ac_range[0]}_${config.ac_range[1]}`, `scale${process.argv[3]}.meshbits.io.	1	IN	A	${process.argv[4]}`);
+				fs.appendFileSync(`./dns_file_data_${config.ac_range[0]}_${config.ac_range[1]}.txt`, `scale${process.argv[3]}.meshbits.io.	1	IN	A	${process.argv[4]}`);
 			}
 
 			var _tmp_dns_file = `
 ${chainsinfo[i].coin}.meshbits.io. 1 IN  CNAME scale${process.argv[3]}.meshbits.io.`
 
-			fs.appendFileSync(`./dns_file_data_${config.ac_range[0]}_${config.ac_range[1]}`, _tmp_dns_file);
+			fs.appendFileSync(`./dns_file_data_${config.ac_range[0]}_${config.ac_range[1]}.txt`, _tmp_dns_file);
 		}
 
 
