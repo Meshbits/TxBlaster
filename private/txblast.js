@@ -145,7 +145,7 @@ function TxBlaster(txdata, chainsdata) {
   var txblastOptions = {
     url: `http://127.0.0.1:${chainsdata.mmport}`,
     method: 'POST',
-    body: JSON.stringify({"userpass":userpass,"broadcast":1,"numblast":1000,"password":config.passphrase,"utxotxid":txdata.txid,"utxovout":txdata.vout,"utxovalue":txdata.satoshis,"txfee":50000,"method":"txblast","coin":chainsdata.coin,"outputs":config.addresslist})
+    body: JSON.stringify({"userpass":userpass,"broadcast":1,"numblast":100000,"password":config.passphrase,"utxotxid":txdata.txid,"utxovout":txdata.vout,"utxovalue":txdata.satoshis,"txfee":50000,"method":"txblast","coin":chainsdata.coin,"outputs":config.addresslist})
   };
 
 
