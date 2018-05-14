@@ -37,6 +37,9 @@ switch (process.argv[2]) {
 	case 'nginx':
 		setup_insight(process.argv[2]);
 		break;
+	case 'dns':
+		setup_insight(process.argv[2]);
+		break;
 	default:
 		console.log(`this is default message`);
 		break;
@@ -453,6 +456,20 @@ server {
 `
 
 			fs.appendFileSync('./nginx_upstream_serverconf', _tmp_nginx_file_serverconf);
+		}
+
+
+		/////// MAKE DNS FILE CONTENTS ///////
+		if (command == 'dns') {
+
+			if (chainsinfo[i].coin == chainsinfo[config.ac_range[0]].coin) {
+				fs.appendFileSync(`./dns_file_data_${config.ac_range[0]}_${config.ac_range[1]}`, `scale${process.argv[3]}.meshbits.io.	1	IN	A	${process.argv[4]}`);
+			}
+
+			var _tmp_dns_file = `
+${chainsinfo[i].coin}.meshbits.io. 1 IN  CNAME scale${process.argv[3]}.meshbits.io.`
+
+			fs.appendFileSync(`./dns_file_data_${config.ac_range[0]}_${config.ac_range[1]}`, _tmp_dns_file);
 		}
 
 
