@@ -125,7 +125,7 @@ for (let i=config.ac_range[0]; i<chainsinfo.length; i++) {
 			});
 
 			_tempMMAppObject = {
-				"name": `${coin_name}`,
+				"name": `mm_${coin_name}`,
 				"script": `${mm_script_path}`,
 				"cwd": path.join(__dirname, '../assets/mmdata')
 			}
@@ -140,7 +140,7 @@ for (let i=config.ac_range[0]; i<chainsinfo.length; i++) {
 			});
 
 			_tempACAppObject = {
-				"name": `${coin_name}`,
+				"name": `ac_${coin_name}`,
 				"script": `${ac_script_path}`,
 				"cwd": path.join(__dirname, '../assets/ac_data')
 			}
