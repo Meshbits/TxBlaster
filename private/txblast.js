@@ -107,7 +107,7 @@ function ListUnspent(coinaddr, chainsdata) {
           console.log(body[i].satoshis);
           console.log(`RUNNING TX BLASTER FOR ${chainsdata.coin}`);
           console.log(`#########################################################`);
-          setTimeout(function(){ TxBlaster(body[i], chainsdata); }, 30 * 1000);
+          TxBlaster(body[i], chainsdata);
           break;
         } else {
           console.log(`Looks like there aren't enough good amount utxos to make transactions blast for ${chainsdata.coin}. Please send UTXO bigger than amount 1 to address: ${coinaddr}`);
