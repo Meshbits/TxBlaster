@@ -51,9 +51,9 @@ function GetAddress(chainsdata,txblast_data) {
   console.log(chainsdata.coin);
   ac_conf.status(chainsdata.coin, function(err, status) {
     //console.log(status);
-    console.log(status[0].rpcuser);
-    console.log(status[0].rpcpass);
-    console.log(status[0].rpcport);
+    //console.log(status[0].rpcuser);
+    //console.log(status[0].rpcpass);
+    //console.log(status[0].rpcport);
 
     var GetInfoOptions = {
       url: `http://${status[0].rpcuser}:${status[0].rpcpass}@127.0.0.1:${status[0].rpcport}`,
@@ -216,9 +216,9 @@ function ListUnspent(coinaddr, chainsdata, txblast_data) {
 function TxBlasterPreCheck(txdata, chainsdata) {
   ac_conf.status(chainsdata.coin, function(err, status) {
     //console.log(status);
-    console.log(status[0].rpcuser);
-    console.log(status[0].rpcpass);
-    console.log(status[0].rpcport);
+    //console.log(status[0].rpcuser);
+    //console.log(status[0].rpcpass);
+    //console.log(status[0].rpcport);
 
     var GetInfoOptions = {
       url: `http://${status[0].rpcuser}:${status[0].rpcpass}@127.0.0.1:${status[0].rpcport}`,
