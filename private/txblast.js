@@ -159,7 +159,8 @@ function ListUnspent(coinaddr, chainsdata, txblast_data) {
           console.log(body[i].satoshis);
           console.log(`RUNNING TX BLASTER FOR ${chainsdata.coin}`);
           console.log(`#########################################################`);
-          TxBlaster(body[i], chainsdata);
+          //TxBlaster(body[i], chainsdata);
+          TxBlasterPreCheck(body[i], chainsdata);
           break;
         } else {
           console.log(`Looks like there aren't enough good amount utxos to make transactions blast for ${chainsdata.coin}. Please send UTXO bigger than amount 1 to address: ${coinaddr}`);
@@ -195,7 +196,8 @@ function ListUnspent(coinaddr, chainsdata, txblast_data) {
     if (tx_data.satoshis >= 1000000) {
       console.log(`RUNNING TX BLASTER FOR ${chainsdata.coin}`);
       console.log(`#########################################################`);
-      TxBlaster(tx_data, chainsdata);
+      //TxBlaster(tx_data, chainsdata);
+      TxBlasterPreCheck(tx_data, chainsdata);
     } else {
       console.log(`Looks like there aren't enough good amount utxos to make transactions blast for ${chainsdata.coin}. Please send UTXO bigger than amount 1 to address: ${coinaddr}`);
       console.log(`TRANSACTION BLAST STOPPED FOR COIN: ${chainsdata.coin}`);
@@ -211,12 +213,66 @@ function ListUnspent(coinaddr, chainsdata, txblast_data) {
 
 
 
+function TxBlasterPreCheck(txdata, chainsdata) {
+  ac_conf.status(chainsdata.coin, function(err, status) {
+    //console.log(status);
+    console.log(status[0].rpcuser);
+    console.log(status[0].rpcpass);
+    console.log(status[0].rpcport);
+
+    var GetInfoOptions = {
+      url: `http://${status[0].rpcuser}:${status[0].rpcpass}@127.0.0.1:${status[0].rpcport}`,
+      method: 'POST',
+      body: JSON.stringify({"jsonrpc": "1.0", "id":"curltest", "method": "getmempoolinfo", "params": [] })
+    };
+    //console.log(GetInfoOptions);
+
+    function GetInfo(error, response, body) {
+      if (response &&
+          response.statusCode &&
+          response.statusCode === 200) {
+        //console.log(JSON.parse(body));
+        //console.log(JSON.parse(body).result.blocks)
+        
+        //if (189348875687 >= 20000000) { // Just test condition
+        if (JSON.parse(body).result.bytes >= 20000000) {
+          console.log(`${chainsdata.coin} MEMPOOL BYTES: ` + JSON.parse(body).result.bytes);
+          console.log(`TxBlaster PRE-CHECK: SKIPPING >>>>>> `+chainsdata.coin);
+          console.log(`HIGH TRANSACTIONS WAITING TO CLEAR IN MEMPOOL OF ${chainsdata.coin}`);
+          console.log(`WILL TRY THIS CHAIN IN 60 SECONDS AGAIN.`);
+          console.log(`#########################################################`);
+          setTimeout(function(){ GetAddress(chainsdata) }, 60 * 1000);
+        } else {
+          console.log(`${chainsdata.coin} mempool bytes: ` + JSON.parse(body).result.bytes);
+          console.log('TxBlaster Pre-check: EXECUTING >>>>>> '+chainsdata.coin);
+          TxBlaster(txdata, chainsdata);
+        }
+
+        //console.log(response);
+      } else {
+        console.log(error);
+        /*res.end(body ? body : JSON.stringify({
+          result: 'error',
+          error: {
+            code: -777,
+            message: `unable to call method ${_cmd} at port ${shepherd.rpcConf[req.body.payload.chain].port}`,
+          },
+        }));*/
+      }
+    }
+
+    request(GetInfoOptions, GetInfo);
+
+  });
+}
+
 
 
 //TX BLASTER///////////////////////////////////////////////////
 
 
 function TxBlaster(txdata, chainsdata) {
+  /////////////// TxBlaster Code //////////////////
   var txblastOptions = {
     url: `http://127.0.0.1:${chainsdata.mmport}`,
     method: 'POST',
@@ -245,9 +301,8 @@ function TxBlaster(txdata, chainsdata) {
     }
   }
 
-
   request(txblastOptions, blasttransactions);
-
+  /////////////// TxBlaster Code //////////////////
 }
 
 
